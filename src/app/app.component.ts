@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {AngularFirestore} from '@angular/fire/firestore';
-import {Item} from './models/Item';
+import {Item} from './components/models/Item';
 
 @Component({
   selector: 'app-root',

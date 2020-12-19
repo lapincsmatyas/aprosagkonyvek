@@ -1,0 +1,26 @@
+.carousel img {
+  width: 100%;
+  height: auto;
+}
+
+.carousel{
+  margin-bottom: 0.5em;
+}
+
+.navigation-indicator-container{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.navigation-indicator{
+  margin: 0.5em;
+  color: #B9B9B9;
+  font-size: 0.5em;
+}
+
+.active{
+  color: #6BD8A5;
+  font-size: 1.5em;
+}
+
