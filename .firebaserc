@@ -9,6 +9,7 @@
     }
   },
   "projects": {
-    "aprosagkonyvek": "aprosag-konyvek"
+    "aprosagkonyvek": "aprosag-konyvek",
+    "default": "aprosag-konyvek"
   }
 }
