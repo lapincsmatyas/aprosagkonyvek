@@ -15,7 +15,7 @@ export class CarouselComponent implements OnInit {
   faRegularCircle = faRegularCircle;
 
   public imageUrls: Observable<string>[];
-  private images = ['107-1645x549.jpg', '861-1645x549.jpg', '107-1645x549.jpg', '861-1645x549.jpg'];
+  private images = ['_0018_Product_1b.jpg', '_0012_Product_2c.jpg', '_0008_Product_3b.jpg', '_0002_Product_4c.jpg'];
 
   @ViewChild('carousel')
   carousel: NgbCarousel;

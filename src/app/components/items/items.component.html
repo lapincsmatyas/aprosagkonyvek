@@ -1,12 +1,15 @@
 <div class="items-container">
+  <div>
+    <img class="items-logo" src="../../../assets/images/logo/Aprosag_konyvek_logo_2_black.svg"/>
+  </div>
   <app-carousel class="carousel-container"></app-carousel>
   <div class="items row ml-auto mr-auto mt-2">
     <div class="card item" *ngFor="let item of items | async">
       <div>
         <div class="card-body">
-          <h5 class="card-title">{{item.title}}</h5>
+          <h5 class="card-title">{{item.id}} - {{item.title}}</h5>
           <p class="card-body">{{item.subtitle}}</p>
-          <a href="#" class="btn btn-primary">Részletek</a>
+          <a href="#" class="btn btn-primary" [routerLink]="['/termekeink', item.id]">Részletek</a>
         </div>
       </div>
     </div>

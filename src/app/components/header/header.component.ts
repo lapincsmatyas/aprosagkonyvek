@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
+import {CartService} from '../../service/cart.service';
 
 
 @Component({
@@ -10,7 +11,7 @@ import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
 export class HeaderComponent implements OnInit {
   faShoppingCart = faShoppingCart;
 
-  constructor() { }
+  constructor(public cartService: CartService) { }
 
   ngOnInit(): void {
   }

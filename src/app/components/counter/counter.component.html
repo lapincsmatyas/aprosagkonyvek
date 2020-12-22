@@ -1,0 +1,168 @@
+<nav ngbNav #nav="ngbNav" class="nav-tabs mt-3">
+  <ng-container ngbNavItem>
+    <a ngbNavLink>Azonosítás</a>
+    <ng-template ngbNavContent>
+
+    </ng-template>
+  </ng-container>
+  <ng-container ngbNavItem>
+    <a ngbNavLink>Számlázási adatok</a>
+    <ng-template ngbNavContent>
+      <form>
+        <div class="row">
+          <div class="col">
+            <label for="lastName">Vezetéknév</label>
+          </div>
+          <div class="col">
+            <input id="lastName" type="text" class="form-control">
+          </div>
+          <div class="col">
+            <label for="firstName">Keresztnév</label>
+          </div>
+          <div class="col">
+            <input id="firstName" type="text" class="form-control">
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <label for="companyName">Cégnév (nem kötelező)</label>
+          </div>
+          <div class="col">
+            <input id="companyName" type="text" class="form-control">
+          </div>
+          <div class="col">
+            <label for="taxNumber">Adószám (Vállalkozásnak kötelező)</label>
+          </div>
+          <div class="col">
+            <input id="taxNumber" type="text" class="form-control">
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <label for="country">Ország</label>
+          </div>
+          <div class="col">
+            <input id="country" type="text" class="form-control">
+          </div>
+          <div class="col">
+            <label for="city">Város</label>
+          </div>
+          <div class="col">
+            <input id="city" type="text" class="form-control">
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <label for="street">Utca, házszám</label>
+          </div>
+          <div class="col">
+            <input id="street" type="text" class="form-control">
+          </div>
+          <div class="col">
+            <label for="zipCode">Irányítószám</label>
+          </div>
+          <div class="col">
+            <input id="zipCode" type="text" class="form-control">
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <label for="phoneNumber">Telefonszám</label>
+          </div>
+          <div class="col">
+            <input id="phoneNumber" type="text" class="form-control">
+          </div>
+          <div class="col">
+            <label for="email">Email cím</label>
+          </div>
+          <div class="col">
+            <input id="email" type="text" class="form-control">
+          </div>
+        </div>
+
+        <input [ngModel]="differentAddress" type="checkbox"/> Szállítás másik címre
+
+        <div *ngIf="differentAddress">
+          <div class="row">
+            <div class="col">
+              <label for="lastName">Vezetéknév</label>
+            </div>
+            <div class="col">
+              <input id="lastName" type="text" class="form-control">
+            </div>
+            <div class="col">
+              <label for="firstName">Keresztnév</label>
+            </div>
+            <div class="col">
+              <input id="firstName" type="text" class="form-control">
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
+              <label for="companyName">Cégnév (nem kötelező)</label>
+            </div>
+            <div class="col">
+              <input id="companyName" type="text" class="form-control">
+            </div>
+            <div class="col">
+              <label for="taxNumber">Adószám (Vállalkozásnak kötelező)</label>
+            </div>
+            <div class="col">
+              <input id="taxNumber" type="text" class="form-control">
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
+              <label for="country">Ország</label>
+            </div>
+            <div class="col">
+              <input id="country" type="text" class="form-control">
+            </div>
+            <div class="col">
+              <label for="city">Város</label>
+            </div>
+            <div class="col">
+              <input id="city" type="text" class="form-control">
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
+              <label for="street">Utca, házszám</label>
+            </div>
+            <div class="col">
+              <input id="street" type="text" class="form-control">
+            </div>
+            <div class="col">
+              <label for="zipCode">Irányítószám</label>
+            </div>
+            <div class="col">
+              <input id="zipCode" type="text" class="form-control">
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
+              <label for="phoneNumber">Telefonszám</label>
+            </div>
+            <div class="col">
+              <input id="phoneNumber" type="text" class="form-control">
+            </div>
+            <div class="col">
+              <label for="email">Email cím</label>
+            </div>
+            <div class="col">
+              <input id="email" type="text" class="form-control">
+            </div>
+          </div>
+        </div>
+      </form>
+    </ng-template>
+  </ng-container>
+  <ng-container ngbNavItem>
+    <a ngbNavLink>Fizetési módok</a>
+    <ng-template ngbNavContent>
+
+    </ng-template>
+  </ng-container>
+</nav>
+
+<div [ngbNavOutlet]="nav" class="mt-2"></div>
