@@ -1,0 +1,76 @@
+<div class="container cart-container">
+  <h1>Kosár</h1>
+  <div  class="cart-content-container">
+    <table class="table">
+      <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Kép</th>
+        <th scope="col">Termék</th>
+        <th scope="col">Ár</th>
+        <th scope="col">Mennyiség</th>
+        <th scope="col">Részösszeg</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr  *ngFor="let item of cartService.cart | keyvalue">
+        <td scope="row">
+          <button class="btn btn-danger" (click)="cartService.clearItemFromCart(item.key)">x</button>
+        </td>
+        <td>{{item.value[0].id}}</td>
+        <td>
+          <strong>{{item.value[0].title}}</strong><br/>
+          {{item.value[0].subtitle}}
+        </td>
+        <td>{{item.value[0].discountPrice ? item.value[0].discountPrice : item.value[0].originalPrice}}</td>
+        <td>
+          <button class="btn btn-light" (click)="changeCount(item.value[0], -1)">-</button>
+          {{item.value[1]}}
+          <button class="btn btn-light" (click)="changeCount(item.value[0], 1)">+</button>
+        </td>
+        <td>{{item.value[1] * (item.value[0].discountPrice ? item.value[0].discountPrice : item.value[0].originalPrice)}}</td>
+      </tr>
+      <tr *ngIf="cartService.cart.size == 0">
+        <td></td>
+        <td>A kosár jelenleg üres :'(</td>
+      </tr>
+      </tbody>
+    </table>
+    <div class="delivery-container" *ngIf="cartService.cart.size > 0" >
+      <table class="table">
+        <thead>
+        <tr>
+          <th scope="col">Kosár összesen</th>
+          <th scope="col"></th>
+          <th scope="col"></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <td>Részösszeg</td>
+          <td></td>
+          <td>{{cartService.getSumItemPrice()}}</td>
+        </tr>
+        <tr>
+          <td>Szállítás</td>
+          <td>
+            <div *ngFor="let delivery of deliveryOptions | keyvalue; let i = index">
+              <input (click)="selectDelivery(delivery)" type="radio" name="delivery">{{delivery.key}}
+            </div>
+          </td>
+          <td>
+            <div *ngFor="let delivery of deliveryOptions | keyvalue">
+              {{delivery.value}}
+            </div>
+        </tr>
+        <tr>
+          <td>Összeg</td>
+          <td></td>
+          <td *ngIf="selectedDelivery">{{cartService.getSumItemPrice() + selectedDelivery.value}}</td>
+        </tr>
+        </tbody>
+      </table>
+      <button [disabled]="!selectedDelivery" routerLink="/penztar" class="btn btn-success">Tovább a pénztárhoz</button>
+    </div>
+  </div>
+</div>

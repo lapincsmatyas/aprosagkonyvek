@@ -1,6 +1,6 @@
 <div class="header-container">
   <nav class="header navbar navbar-expand-lg navbar-light">
-    <a class="navbar-brand" href="#">Apróság könyvek</a>
+    <a class="navbar-brand" href="#"><img class="header-logo" src="../../../assets/images/logo/Aprosag_konyvek_logo_1_black.svg"></a>
     <div class="collapse navbar-collapse">
       <ul class="navbar-nav ml-auto">
         <li class="nav-item active">
@@ -16,7 +16,7 @@
           <a class="nav-link" routerLink="kapcsolat">Kapcsolat</a>
         </li>
         <li class="nav-item active">
-          <a class="nav-link" routerLink="kosar"><fa-icon [icon]="faShoppingCart"></fa-icon></a>
+          <a class="nav-link" routerLink="kosar"><fa-icon [icon]="faShoppingCart"></fa-icon>{{cartService.getItemCount()}}</a>
         </li>
       </ul>
     </div>

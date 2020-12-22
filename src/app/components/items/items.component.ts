@@ -16,7 +16,7 @@ export class ItemsComponent implements OnInit {
               private fireStorage: AngularFireStorage) { }
 
   ngOnInit(): void {
-      this.items = this.fireStore.collection<Item>('items').valueChanges();
+      this.items = this.fireStore.collection<Item>('items').valueChanges({idField: 'id'});
 
 
   }

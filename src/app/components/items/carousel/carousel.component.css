@@ -1,10 +1,13 @@
 .carousel img {
   width: 100%;
-  height: auto;
+  margin-top: -25%;
 }
 
 .carousel{
   margin-bottom: 0.5em;
+  max-height: 549px;
+  position: relative;
+  overflow: hidden;
 }
 
 .navigation-indicator-container{

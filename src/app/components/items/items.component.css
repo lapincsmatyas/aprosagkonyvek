@@ -1,9 +1,9 @@
 .items-container{
   text-align: center;
 }
+
 .carousel-container{
   display: block;
-  margin-top: 2em;
 }
 
 .items{
@@ -15,4 +15,8 @@
 .item{
   flex-basis: calc(100% / 3 - 3*1em);
   margin: 1em;
+}
+
+.items-logo{
+  margin: 2em auto;
 }

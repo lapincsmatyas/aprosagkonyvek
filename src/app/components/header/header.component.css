@@ -1,10 +1,21 @@
 .header-container{
   box-shadow: 0px 5px 5px #888888;
   z-index: 9999;
+  background-color: white;
 }
 
 .header{
   max-width: 1650px;
   width: 85%;
   margin: 0 auto;
+  padding: 0;
+}
+
+.navbar-brand{
+  padding: 0;
+}
+
+.header-logo{
+  width: 297px;
+  height: auto;
 }

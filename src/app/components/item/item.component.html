@@ -1,0 +1,15 @@
+<div *ngIf="item">
+  <span class="label">Cím:</span> {{item.title}}<br/>
+  <span class="label">Alcím:</span> {{item.subtitle}}<br/>
+  <span class="label">Leírás:</span> {{item.description}}<br/>
+  <span class="label">Oldalszám:</span> {{item.pageNumber}}<br/>
+  <span class="label">ISBN:</span> {{item.isbn}}<br/>
+  <span class="label">Raktáron:</span> {{item.inStock}}<br/>
+  <span class="label">Borító:</span> {{item.coverType}}<br/>
+  <span class="label">Eredeti ár:</span> {{item.originalPrice}}<br/>
+  <span class="label">Akciós ár:</span> {{item.discountPrice}}<br/>
+  <span class="label">Súly:</span> {{item.publicationYear}}<br/>
+
+  <button class="btn btn-light" (click)="changeCount(-1)">-</button>{{count}}<button class="btn btn-light" (click)="changeCount(1)">+</button>
+  <button class="btn btn-success" (click)="addToCart()">Kosárba</button>
+</div>
