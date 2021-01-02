@@ -1,0 +1,10 @@
+.description{
+  max-width: 150px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.item-image{
+  max-width: 60px;
+}

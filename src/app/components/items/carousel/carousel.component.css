@@ -10,6 +10,10 @@
   overflow: hidden;
 }
 
+.carousel-container{
+  height: 549px;
+}
+
 .navigation-indicator-container{
   display: flex;
   align-items: center;

@@ -1,0 +1,25 @@
+<div class="d-flex  admin-container">
+  <ul ngbNav #nav="ngbNav" class="nav-pills" orientation="vertical">
+    <li ngbNavItem="orders">
+      <a ngbNavLink>Rendelések</a>
+      <ng-template ngbNavContent>
+
+        <app-admin-orders></app-admin-orders>
+      </ng-template>
+    </li>
+    <li ngbNavItem="items">
+      <a ngbNavLink>Termékek</a>
+      <ng-template ngbNavContent>
+        <app-admin-items></app-admin-items>
+      </ng-template>
+    </li>
+    <li ngbNavItem="slider">
+      <a ngbNavLink>Slider</a>
+      <ng-template ngbNavContent>
+        <app-admin-carousel></app-admin-carousel>
+      </ng-template>
+    </li>
+  </ul>
+
+  <div [ngbNavOutlet]="nav" class="ml-4"></div>
+</div>

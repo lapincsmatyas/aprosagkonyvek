@@ -1,7 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {AngularFirestore} from '@angular/fire/firestore';
 import {CartService} from './service/cart.service';
-import {Item} from './components/models/Item';
+import {Item} from './models/Item';
+import {ToastrService} from 'ngx-toastr';
 
 @Component({
   selector: 'app-root',
@@ -11,15 +12,11 @@ import {Item} from './components/models/Item';
 export class AppComponent implements OnInit{
   title = 'aprosagkonyvek';
 
-  constructor(private firestore: AngularFirestore, private cartService: CartService) {
+  constructor(private toasrt: ToastrService) {
   }
 
 
   ngOnInit(): void {
-    this.firestore.collection<Item>('items').valueChanges({idField: 'id'}).subscribe(result => {
-      console.log(result);
-      this.cartService.addMultipleItemToCart(result);
-    });
   }
 }
 

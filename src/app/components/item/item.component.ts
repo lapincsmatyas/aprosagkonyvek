@@ -1,9 +1,10 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
-import {Item} from '../models/Item';
+import {Item} from '../../models/Item';
 import {AngularFirestore} from '@angular/fire/firestore';
 import {Observable} from 'rxjs';
 import {CartService} from '../../service/cart.service';
+import {ToastrService} from 'ngx-toastr';
 
 @Component({
   selector: 'app-item',
@@ -15,6 +16,7 @@ export class ItemComponent implements OnInit {
   count = 1;
 
   constructor(private router: ActivatedRoute,
+              private toastr: ToastrService,
               private firestore: AngularFirestore,
               private cartService: CartService) {
   }
@@ -29,6 +31,8 @@ export class ItemComponent implements OnInit {
 
   addToCart(): void {
     this.cartService.addItemToCart(this.item, this.count);
+    this.toastr.success('Termék hozzáadva a kosárhoz');
+    this.count = 1;
   }
 
   changeCount(count: number): void {

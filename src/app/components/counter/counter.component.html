@@ -1,166 +1,186 @@
-<nav ngbNav #nav="ngbNav" class="nav-tabs mt-3">
-  <ng-container ngbNavItem>
+<nav ngbNav #counterNav="ngbNav" class="nav-tabs mt-3" [activeId]="1" >
+  <ng-container [ngbNavItem]="0" [disabled]="true">
     <a ngbNavLink>Azonosítás</a>
     <ng-template ngbNavContent>
+      <button class="btn btn-success" (click)="counterNav.select(1)">Tovább a számlázási adatokhoz</button>
 
     </ng-template>
   </ng-container>
-  <ng-container ngbNavItem>
+  <ng-container [ngbNavItem]="1" [disabled]="true">
     <a ngbNavLink>Számlázási adatok</a>
     <ng-template ngbNavContent>
-      <form>
-        <div class="row">
-          <div class="col">
-            <label for="lastName">Vezetéknév</label>
-          </div>
-          <div class="col">
-            <input id="lastName" type="text" class="form-control">
-          </div>
-          <div class="col">
-            <label for="firstName">Keresztnév</label>
-          </div>
-          <div class="col">
-            <input id="firstName" type="text" class="form-control">
-          </div>
-        </div>
-        <div class="row">
-          <div class="col">
-            <label for="companyName">Cégnév (nem kötelező)</label>
-          </div>
-          <div class="col">
-            <input id="companyName" type="text" class="form-control">
-          </div>
-          <div class="col">
-            <label for="taxNumber">Adószám (Vállalkozásnak kötelező)</label>
-          </div>
-          <div class="col">
-            <input id="taxNumber" type="text" class="form-control">
-          </div>
-        </div>
-        <div class="row">
-          <div class="col">
-            <label for="country">Ország</label>
-          </div>
-          <div class="col">
-            <input id="country" type="text" class="form-control">
-          </div>
-          <div class="col">
-            <label for="city">Város</label>
-          </div>
-          <div class="col">
-            <input id="city" type="text" class="form-control">
-          </div>
-        </div>
-        <div class="row">
-          <div class="col">
-            <label for="street">Utca, házszám</label>
-          </div>
-          <div class="col">
-            <input id="street" type="text" class="form-control">
-          </div>
-          <div class="col">
-            <label for="zipCode">Irányítószám</label>
-          </div>
-          <div class="col">
-            <input id="zipCode" type="text" class="form-control">
-          </div>
-        </div>
-        <div class="row">
-          <div class="col">
-            <label for="phoneNumber">Telefonszám</label>
-          </div>
-          <div class="col">
-            <input id="phoneNumber" type="text" class="form-control">
-          </div>
-          <div class="col">
-            <label for="email">Email cím</label>
-          </div>
-          <div class="col">
-            <input id="email" type="text" class="form-control">
-          </div>
-        </div>
-
-        <input [ngModel]="differentAddress" type="checkbox"/> Szállítás másik címre
-
-        <div *ngIf="differentAddress">
+      <form [formGroup]="counterForm">
+        <div formGroupName="billingAddress">
           <div class="row">
             <div class="col">
-              <label for="lastName">Vezetéknév</label>
+              <label for="billingLastName">Vezetéknév</label>
             </div>
             <div class="col">
-              <input id="lastName" type="text" class="form-control">
+              <input id="billingLastName" type="text" class="form-control" formControlName="lastName" [(ngModel)]="billingAddress.lastName">
             </div>
             <div class="col">
-              <label for="firstName">Keresztnév</label>
+              <label for="billingFirstName">Keresztnév</label>
             </div>
             <div class="col">
-              <input id="firstName" type="text" class="form-control">
+              <input id="billingFirstName" type="text" class="form-control" formControlName="firstName" [(ngModel)]="billingAddress.firstName">
             </div>
           </div>
           <div class="row">
             <div class="col">
-              <label for="companyName">Cégnév (nem kötelező)</label>
+              <label for="billingCompanyName">Cégnév (nem kötelező)</label>
             </div>
             <div class="col">
-              <input id="companyName" type="text" class="form-control">
+              <input id="billingCompanyName" type="text" class="form-control" formControlName="companyName" [(ngModel)]="billingAddress.companyName">
             </div>
             <div class="col">
-              <label for="taxNumber">Adószám (Vállalkozásnak kötelező)</label>
+              <label for="billingTaxNumber">Adószám (Vállalkozásnak kötelező)</label>
             </div>
             <div class="col">
-              <input id="taxNumber" type="text" class="form-control">
-            </div>
-          </div>
-          <div class="row">
-            <div class="col">
-              <label for="country">Ország</label>
-            </div>
-            <div class="col">
-              <input id="country" type="text" class="form-control">
-            </div>
-            <div class="col">
-              <label for="city">Város</label>
-            </div>
-            <div class="col">
-              <input id="city" type="text" class="form-control">
+              <input id="billingTaxNumber" type="text" class="form-control" formControlName="taxNumber" [(ngModel)]="billingAddress.taxNumber">
             </div>
           </div>
           <div class="row">
             <div class="col">
-              <label for="street">Utca, házszám</label>
+              <label for="billingCountry">Ország</label>
             </div>
             <div class="col">
-              <input id="street" type="text" class="form-control">
+              <input id="billingCountry" type="text" class="form-control" formControlName="country" [(ngModel)]="billingAddress.country">
             </div>
             <div class="col">
-              <label for="zipCode">Irányítószám</label>
+              <label for="billingCity">Város</label>
             </div>
             <div class="col">
-              <input id="zipCode" type="text" class="form-control">
+              <input id="billingCity" type="text" class="form-control" formControlName="city" [(ngModel)]="billingAddress.city">
             </div>
           </div>
           <div class="row">
             <div class="col">
-              <label for="phoneNumber">Telefonszám</label>
+              <label for="billingStreet">Utca, házszám</label>
             </div>
             <div class="col">
-              <input id="phoneNumber" type="text" class="form-control">
+              <input id="billingStreet" type="text" class="form-control" formControlName="streetAndHouseNumber" [(ngModel)]="billingAddress.streetAndHouseNumber">
             </div>
             <div class="col">
-              <label for="email">Email cím</label>
+              <label for="billingZipCode">Irányítószám</label>
             </div>
             <div class="col">
-              <input id="email" type="text" class="form-control">
+              <input id="billingZipCode" type="text" class="form-control" formControlName="zipCode" [(ngModel)]="billingAddress.zipCode">
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
+              <label for="billingPhoneNumber">Telefonszám</label>
+            </div>
+            <div class="col">
+              <input id="billingPhoneNumber" type="text" class="form-control" formControlName="phoneNumber" [(ngModel)]="billingAddress.phoneNumber">
+            </div>
+            <div class="col">
+              <label for="billingEmailAddress">Email cím</label>
+            </div>
+            <div class="col">
+              <input id="billingEmailAddress" type="text" class="form-control" formControlName="emailAddress" [(ngModel)]="billingAddress.emailAddress">
+            </div>
+          </div>
+        </div>
+        <input class="checkbox" type="checkbox" formControlName="differentAddress">Szállítás másik címre
+        <div formGroupName="deliveryAddress" *ngIf="counterForm.controls['differentAddress'].value">
+          <div class="row">
+            <div class="col">
+              <label for="deliveryLastName">Vezetéknév</label>
+            </div>
+            <div class="col">
+              <input id="deliveryLastName" type="text" class="form-control" formControlName="lastName" [(ngModel)]="deliveryAddress.lastName">
+            </div>
+            <div class="col">
+              <label for="deliveryFirstName">Keresztnév</label>
+            </div>
+            <div class="col">
+              <input id="deliveryFirstName" type="text" class="form-control" formControlName="firstName" [(ngModel)]="deliveryAddress.firstName">
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
+              <label for="deliveryCompanyName">Cégnév (nem kötelező)</label>
+            </div>
+            <div class="col">
+              <input id="deliveryCompanyName" type="text" class="form-control" formControlName="companyName" [(ngModel)]="deliveryAddress.companyName">
+            </div>
+            <div class="col">
+              <label for="deliveryTaxNumber">Adószám (Vállalkozásnak kötelező)</label>
+            </div>
+            <div class="col">
+              <input id="deliveryTaxNumber" type="text" class="form-control" formControlName="taxNumber" [(ngModel)]="deliveryAddress.taxNumber">
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
+              <label for="deliveryCountry">Ország</label>
+            </div>
+            <div class="col">
+              <input id="deliveryCountry" type="text" class="form-control" formControlName="country" [(ngModel)]="deliveryAddress.country">
+            </div>
+            <div class="col">
+              <label for="deliveryCity">Város</label>
+            </div>
+            <div class="col">
+              <input id="deliveryCity" type="text" class="form-control" formControlName="city" [(ngModel)]="deliveryAddress.city">
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
+              <label for="deliveryStreet">Utca, házszám</label>
+            </div>
+            <div class="col">
+              <input id="deliveryStreet" type="text" class="form-control" formControlName="streetAndHouseNumber" [(ngModel)]="deliveryAddress.streetAndHouseNumber">
+            </div>
+            <div class="col">
+              <label for="deliveryZipCode">Irányítószám</label>
+            </div>
+            <div class="col">
+              <input id="deliveryZipCode" type="text" class="form-control" formControlName="zipCode" [(ngModel)]="deliveryAddress.zipCode">
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
+              <label for="deliveryPhoneNumber">Telefonszám</label>
+            </div>
+            <div class="col">
+              <input id="deliveryPhoneNumber" type="text" class="form-control" formControlName="phoneNumber" [(ngModel)]="deliveryAddress.phoneNumber">
+            </div>
+            <div class="col">
+              <label for="deliveryEmail">Email cím</label>
+            </div>
+            <div class="col">
+              <input id="deliveryEmail" type="text" class="form-control" formControlName="emailAddress" [(ngModel)]="deliveryAddress.emailAddress">
             </div>
           </div>
         </div>
       </form>
+      <button class="btn btn-secondary" (click)="nav.select(0)">Vissza</button>
+      <button class="btn btn-success" (click)="goToPaymentOptions()" [disabled]="counterForm.invalid">Tovább a fizetési módokhoz</button>
     </ng-template>
   </ng-container>
-  <ng-container ngbNavItem>
+  <ng-container [ngbNavItem]="2" [disabled]="true">
     <a ngbNavLink>Fizetési módok</a>
     <ng-template ngbNavContent>
+      <h2>Fizetési módok</h2>
+      <div *ngFor="let paymentOption of paymentOptions | keyvalue">
+        <div>
+          <input class="radio-button" (click)="changeSelectedPaymentOption(paymentOption)" type="radio"
+                 name="paymentOption"><strong>{{paymentOption.key}}</strong>
 
+        </div>
+        <span style="white-space: pre-line">{{paymentOption.value}}</span>
+
+      </div>
+      <div>
+        <input class="checkbox" type="checkbox" [(ngModel)]="acceptDataPolicy">Elfogadom az <a>Adatvédelmi tájékoztatót</a><br/>
+        <input class="checkbox" type="checkbox" [(ngModel)]="acceptASZF">Elfogadom az <a>Általános Szerződési Feltételeket (ÁSZF)</a>
+      </div>
+      <div>
+        <button class="btn btn-secondary" (click)="nav.select(1)">Vissza</button>
+        <button class="btn btn-success" (click)="placeOrder()" [disabled]="!selectedPaymentOption.key || (!acceptDataPolicy || !acceptASZF)">Rendelés megerősítése</button>
+      </div>
     </ng-template>
   </ng-container>
 </nav>

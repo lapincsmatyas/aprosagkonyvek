@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {AngularFirestore} from '@angular/fire/firestore';
 import {Observable} from 'rxjs';
 import {AngularFireStorage} from '@angular/fire/storage';
-import {Item} from '../models/Item';
+import {Item} from '../../models/Item';
 
 @Component({
   selector: 'app-items',
@@ -17,8 +17,6 @@ export class ItemsComponent implements OnInit {
 
   ngOnInit(): void {
       this.items = this.fireStore.collection<Item>('items').valueChanges({idField: 'id'});
-
-
   }
 
 }

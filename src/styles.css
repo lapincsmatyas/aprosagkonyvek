@@ -17,3 +17,9 @@ body{
   font-family: lato-heavy;
   src: url("/assets/fonts/Lato_font/Lato-Heavy.ttf")  format("opentype");
 }
+
+
+h1{
+  font-family: lato-heavy, serif;
+  color: #565656
+}

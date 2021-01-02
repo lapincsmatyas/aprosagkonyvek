@@ -1,0 +1,74 @@
+<h1>Rendelések: </h1>
+<table class="table table-striped">
+  <thead>
+  <tr>
+    <th scope="col">Státusz</th>
+    <th scope="col">Termékek</th>
+    <th scope="col">Számlázási cím</th>
+    <th scope="col">Szállítási cím</th>
+    <th scope="col">Szállítási mód</th>
+    <th scope="col">Fizetési mód</th>
+    <th scope="col">Admin</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let order of orders; index as i">
+    <td>
+      {{order.state.toString()}}
+    </td>
+    <td>
+      <table class="w-100">
+        <tr *ngFor="let item of order.items">
+          <div><strong>Cím:</strong>{{item.item.title}}</div>
+          <div><strong>Alcím:</strong> {{item.item.subtitle}}</div>
+          <div><strong>ISBN:</strong> {{item.item.isbn}}</div>
+          <div><strong>Mennyiség:</strong> {{item.count}}</div>
+        </tr>
+      </table>
+    </td>
+    <td>
+      <div><strong>Vezetéknév:</strong>{{order.billingAddress.lastName}}</div>
+      <div><strong>Keresztnév:</strong>{{order.billingAddress.firstName}}</div>
+      <div><strong>Cégnév:</strong>{{order.billingAddress.companyName}}</div>
+      <div><strong>Adószám:</strong>{{order.billingAddress.taxNumber}}</div>
+      <div><strong>Ország:</strong>{{order.billingAddress.country}}</div>
+      <div><strong>Város:</strong>{{order.billingAddress.city}}</div>
+      <div><strong>Utca, házszám:</strong>{{order.billingAddress.streetAndHouseNumber}}</div>
+      <div><strong>Irányítószám:</strong>{{order.billingAddress.zipCode}}</div>
+      <div><strong>Telefonszám:</strong>{{order.billingAddress.phoneNumber}}</div>
+      <div><strong>Emailcím:</strong>{{order.billingAddress.emailAddress}}</div>
+
+    </td>
+    <td>
+      <div *ngIf="order.deliveryAddress">
+        <div><strong>Vezetéknév:</strong>{{order.deliveryAddress.lastName}}</div>
+        <div><strong>Keresztnév:</strong>{{order.deliveryAddress.firstName}}</div>
+        <div><strong>Cégnév:</strong>{{order.deliveryAddress.companyName}}</div>
+        <div><strong>Adószám:</strong>{{order.deliveryAddress.taxNumber}}</div>
+        <div><strong>Ország:</strong>{{order.deliveryAddress.country}}</div>
+        <div><strong>Város:</strong>{{order.deliveryAddress.city}}</div>
+        <div><strong>Utca, házszám:</strong>{{order.deliveryAddress.streetAndHouseNumber}}</div>
+        <div><strong>Irányítószám:</strong>{{order.deliveryAddress.zipCode}}</div>
+        <div><strong>Telefonszám:</strong>{{order.deliveryAddress.phoneNumber}}</div>
+        <div><strong>Emailcím:</strong>{{order.deliveryAddress.emailAddress}}</div>
+      </div>
+      <div *ngIf="!order.deliveryAddress">
+        -
+      </div>
+    </td>
+    <td>
+      <div [ngbTooltip]="'Ár: ' + order.deliveryType.price">{{order.deliveryType.name}}</div>
+    </td>
+    <td>
+      <div [ngbTooltip]="order.paymentType.description">{{order.paymentType.name}}</div>
+    </td>
+    <td>
+      <button class="btn btn-block btn-primary" [disabled]="order.state == OrderState.NEW" (click)="changeState(order, OrderState.NEW)">Új</button>
+      <button class="btn btn-block btn-primary" [disabled]="order.state == OrderState.BILLED" (click)="changeState(order, OrderState.BILLED)">Számlázva</button>
+      <button class="btn btn-block btn-primary" [disabled]="order.state == OrderState.PREPARED" (click)="changeState(order, OrderState.PREPARED)">Összekészítve</button>
+      <button class="btn btn-block btn-primary" [disabled]="order.state == OrderState.CLOSED" (click)="changeState(order, OrderState.CLOSED)">Lezárva</button>
+      <button class="btn btn-block btn-primary" [disabled]="order.state == OrderState.DELETED" (click)="changeState(order, OrderState.DELETED)">Törölve</button>
+    </td>
+  </tr>
+  </tbody>
+</table>

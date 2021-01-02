@@ -4,6 +4,7 @@ import {Observable} from 'rxjs';
 import {faCircle as faSolidCircle} from '@fortawesome/free-solid-svg-icons';
 import {faCircle as faRegularCircle} from '@fortawesome/free-regular-svg-icons';
 import {NgbCarousel} from '@ng-bootstrap/ng-bootstrap';
+import {map} from 'rxjs/operators';
 
 @Component({
   selector: 'app-carousel',
@@ -14,25 +15,30 @@ export class CarouselComponent implements OnInit {
   faSolidCircle = faSolidCircle;
   faRegularCircle = faRegularCircle;
 
-  public imageUrls: Observable<string>[];
-  private images = ['_0018_Product_1b.jpg', '_0012_Product_2c.jpg', '_0008_Product_3b.jpg', '_0002_Product_4c.jpg'];
-
+  public imageUrls;
+  public downloaded = false;
   @ViewChild('carousel')
   carousel: NgbCarousel;
 
-  constructor(private fireStorage: AngularFireStorage,
-              private cdr: ChangeDetectorRef) {
+  constructor(private fireStorage: AngularFireStorage) {
   }
 
   ngOnInit(): void {
-    if (this.imageUrls == null) {
-      this.imageUrls = this.images.map(imageName => this.fireStorage.ref(`images/${imageName}`).getDownloadURL());
-    }
+    this.imageUrls = [];
+    this.fireStorage.ref('images/carousel').listAll().subscribe(result => {
+      result.items.forEach((item) => {
+        item.getDownloadURL().then((res) => {
+          this.imageUrls.push(res);
+        }).then(() =>{
+          this.downloaded = true;
+        });
+
+      });
+    });
   }
 
   switchImage(index: number): void {
     this.carousel.select(`ngb-slide-${index}`);
-    this.cdr.detectChanges();
   }
 
   isActive(i: number): boolean {

@@ -6,8 +6,9 @@
   <div class="items row ml-auto mr-auto mt-2">
     <div class="card item" *ngFor="let item of items | async">
       <div>
+        <img class="card-img-top" [src]="item.images[0].url" alt="Card image cap">
         <div class="card-body">
-          <h5 class="card-title">{{item.id}} - {{item.title}}</h5>
+          <h5 class="card-title">{{item.title}}</h5>
           <p class="card-body">{{item.subtitle}}</p>
           <a href="#" class="btn btn-primary" [routerLink]="['/termekeink', item.id]">Részletek</a>
         </div>

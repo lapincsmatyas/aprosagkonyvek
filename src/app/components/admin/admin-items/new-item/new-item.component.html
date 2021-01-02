@@ -1,0 +1,61 @@
+<form class="m-4">
+
+  <div class="form-group row">
+    <label for="title" class="col-sm-3">Cím</label>
+    <input type="email" class="form-control col-sm-8" id="title" [(ngModel)]="item.title" name="title">
+  </div>
+  <div class="form-group row">
+    <label for="title" class="col-sm-3">Alcím</label>
+    <input type="email" class="form-control col-sm-8" id="subtitle" [(ngModel)]="item.subtitle" name="subtitle">
+  </div>
+  <div class="form-group row">
+    <label for="title" class="col-sm-3">Leírás</label>
+    <textarea class="form-control col-sm-8" id="description" [(ngModel)]="item.description"
+              name="description"></textarea>
+  </div>
+  <div class="form-group row">
+    <label for="title" class="col-sm-3">ISBN</label>
+    <input type="text" class="form-control col-sm-8" id="ISBN" [(ngModel)]="item.isbn" name="isbn">
+  </div>
+  <div class="form-group row">
+    <label for="title" class="col-sm-3">Súly</label>
+    <input type="number" class="form-control col-sm-8" id="weight" [(ngModel)]="item.weight" name="weight">
+  </div>
+  <div class="form-group row">
+    <label for="title" class="col-sm-3">Raktáron</label>
+    <input type="number" class="form-control col-sm-8" id="inStock" [(ngModel)]="item.inStock" name="inStock">
+  </div>
+  <div class="form-group row">
+    <label for="title" class="col-sm-3">Eredeti ár</label>
+    <input type="number" class="form-control col-sm-8" id="originalPrice" [(ngModel)]="item.originalPrice"
+           name="originalPrice">
+  </div>
+  <div class="form-group row">
+    <label for="title" class="col-sm-3">Akciós ár</label>
+    <input type="number" class="form-control col-sm-8" id="discountPrice" [(ngModel)]="item.discountPrice"
+           name="discountPrice">
+  </div>
+  <div class="form-group row">
+    <label for="title" class="col-sm-3">Képek</label>
+    <input type="file"
+           multiple="multiple"
+           class="col-sm-8"
+           id="file"
+           (change)="onFileSelected($event.target.files)"
+           name="image"
+           autocomplete="off"
+    />
+  </div>
+  <div >
+    <div *ngFor="let act of item.images">
+      <div class="row">
+        <img class="item-image" [src]="act ?  act.url : '/assets/images/loading/Loading_anim.gif'"/>
+        <span *ngIf="act">
+          <button class="btn btn-danger">x</button>
+        </span>
+      </div>
+    </div>
+  </div>
+  <button type="submit" class="btn btn-primary" (click)="saveItem()">Mentés</button>
+  <button type="submit" class="btn btn-danger ml-1" (click)="cancel()">Mégse</button>
+</form>

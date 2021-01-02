@@ -1,0 +1,33 @@
+<h1>Termékek: </h1>
+<button class="btn btn-success float-right m-2" (click)="addNemItem()">+</button>
+<table class="table table-striped">
+  <thead>
+  <tr>
+    <th scope="col">Kép</th>
+    <th scope="col">Cím</th>
+    <th scope="col">Alcím</th>
+    <th scope="col">Leírás</th>
+    <th scope="col">ISBN</th>
+    <th scope="col">Súly</th>
+    <th scope="col">Raktáron</th>
+    <th scope="col">Eredeti ár</th>
+    <th scope="col">Akciós ár</th>
+    <th scope="col">Törlés / Szerkesztés</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let item of items | async; index as i">
+    <td><img class="item-image" [src]="item.images[0].url"/> </td>
+    <td>{{item.title}}</td>
+    <td>{{item.subtitle}}</td>
+    <td class="description">{{item.description}}</td>
+    <td>{{item.isbn}}</td>
+    <td>{{item.weight}}</td>
+    <td>{{item.inStock}}</td>
+    <td>{{item.originalPrice}}</td>
+    <td>{{item.discountPrice}}</td>
+    <td><button class="btn btn-danger" (click)="deleteItem(item)">x</button>
+      <button class="btn btn-primary ml-1" (click)="editItem(item)">o</button> </td>
+  </tr>
+  </tbody>
+</table>

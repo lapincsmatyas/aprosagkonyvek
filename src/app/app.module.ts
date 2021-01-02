@@ -19,7 +19,16 @@ import {AboutUsComponent} from './components/about-us/about-us.component';
 import {CarouselComponent} from './components/items/carousel/carousel.component';
 import {ItemsComponent} from './components/items/items.component';
 import {HeaderComponent} from './components/header/header.component';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { AdminComponent } from './components/admin/admin.component';
+import {ToastrModule} from 'ngx-toastr';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { AdminOrdersComponent } from './components/admin/admin-orders/admin-orders.component';
+import { AdminItemsComponent } from './components/admin/admin-items/admin-items.component';
+import { NewItemComponent } from './components/admin/admin-items/new-item/new-item.component';
+import { AdminCarouselComponent } from './components/admin/admin-carousel/admin-carousel.component';
+import { AdminFilteredOrdersComponent } from './components/admin/admin-orders/admin-filtered-orders/admin-filtered-orders.component';
+import {OrderFilterPipe} from './service/order-filter-pipe';
 
 const routes: Routes = [
   {path: 'termekeink', component: ItemsComponent},
@@ -30,6 +39,7 @@ const routes: Routes = [
   {path: 'profil', component: ProfileComponent},
   {path: 'kosar', component: CartComponent},
   {path: 'penztar', component: CounterComponent},
+  {path: 'admin', component: AdminComponent},
   {path: '**', redirectTo: 'termekeink'}
 ];
 
@@ -45,17 +55,29 @@ const routes: Routes = [
     CartComponent,
     CarouselComponent,
     ItemComponent,
-    CounterComponent
+    CounterComponent,
+    AdminComponent,
+    AdminOrdersComponent,
+    AdminItemsComponent,
+    NewItemComponent,
+    AdminCarouselComponent,
+    AdminFilteredOrdersComponent,
+    OrderFilterPipe
   ],
   imports: [
     BrowserModule,
     AngularFireModule.initializeApp(environment.firebase),
+    ToastrModule.forRoot({
+      positionClass: 'toast-bottom-right'
+    }),
     AngularFirestoreModule,
     AngularFireStorageModule,
     FontAwesomeModule,
     RouterModule.forRoot(routes),
     NgbModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

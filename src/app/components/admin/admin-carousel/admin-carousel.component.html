@@ -1,0 +1,16 @@
+<h1>Slider: </h1>
+<div class="image-container">
+  <div *ngFor="let image of images">
+    <img class="image" [src]="image ? image : '/assets/images/loading/Loading_anim.gif'"/>
+    <button class="btn btn-danger" (click)="deleteImage(image)">x</button>
+  </div>
+</div>
+<div class="image-upload-container">
+  <input type="file"
+         class="col-sm-8"
+         id="file"
+         (change)="onFileSelected($event.target.files[0])"
+         name="image"
+         autocomplete="off"
+  />
+</div>

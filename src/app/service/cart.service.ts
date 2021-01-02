@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
-import {Item} from '../components/models/Item';
+import {Item} from '../models/Item';
+import {KeyValue} from '@angular/common';
 
 @Injectable({
   providedIn: 'root'
@@ -7,7 +8,14 @@ import {Item} from '../components/models/Item';
 export class CartService {
   cart = new Map<string, [Item, number]>();
 
-  constructor() { }
+  public deliveryOptions = new Map<string, number>();
+  public selectedDelivery: KeyValue<string, number> = {key: null, value: null};
+
+  constructor() {
+    this.deliveryOptions.set('Házhozszállítás GLS-sel', 1490);
+    this.deliveryOptions.set('Foxpost csomagautomata', 700);
+    this.deliveryOptions.set('Személyes átvétel Mosonmagyaróváron', 0);
+  }
 
   getItemCount(): number {
     let temp = 0;
@@ -44,5 +52,10 @@ export class CartService {
   clearItemFromCart(item): void {
     this.cart.delete(item);
     console.log(this.cart);
+  }
+
+  emptyCart(): void {
+    this.cart = new Map<string, [Item, number]>();
+    this.selectedDelivery = {key: null, value: null};
   }
 }

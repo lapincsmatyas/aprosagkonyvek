@@ -1,0 +1,15 @@
+input.ng-invalid {
+  box-shadow: 0px 0px 3px red;
+}
+
+.row{
+  margin-top: 1em;
+}
+
+.radio-button{
+  margin: 1em;
+}
+
+.checkbox {
+  margin: 1em;
+}

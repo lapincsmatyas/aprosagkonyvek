@@ -1,4 +1,12 @@
-<div *ngIf="item">
+<div *ngIf="item" class="m-3">
+  <div id="carouselExampleControls" class="carousel slide"  data-ride="carousel">
+    <div class="carousel-inner">
+      <div *ngFor="let image of item.images" class="carousel-item active">
+        <img style="height: 400px;" class="d-block" [src]="image.url" alt="First slide">
+      </div>
+    </div>
+  </div>
+
   <span class="label">Cím:</span> {{item.title}}<br/>
   <span class="label">Alcím:</span> {{item.subtitle}}<br/>
   <span class="label">Leírás:</span> {{item.description}}<br/>

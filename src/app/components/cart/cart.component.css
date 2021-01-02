@@ -10,3 +10,7 @@ h1{
   font-family: lato-heavy, serif;
   color: #565656
 }
+
+.item-image{
+  max-width: 150px;
+}

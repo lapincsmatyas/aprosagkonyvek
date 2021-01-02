@@ -1,0 +1,42 @@
+<div class="d-flex" *ngIf="orders" >
+  <ul ngbNav #nav="ngbNav" [(activeId)]="active" class="nav-pills" orientation="vertical">
+    <li ngbNavItem="all">
+      <a ngbNavLink>Összes</a>
+      <ng-template ngbNavContent>
+        <app-admin-filtered-orders [orders]="orders"></app-admin-filtered-orders>
+      </ng-template>
+    </li>
+    <li ngbNavItem="new">
+      <a ngbNavLink>Új rendelés ({{(orders | orderFilter : OrderState.NEW).length}} db)</a>
+      <ng-template ngbNavContent>
+        <app-admin-filtered-orders [orders]="orders | orderFilter : OrderState.NEW"></app-admin-filtered-orders>
+      </ng-template>
+    </li>
+    <li ngbNavItem="billed">
+      <a ngbNavLink>Számlázott</a>
+      <ng-template ngbNavContent>
+        <app-admin-filtered-orders [orders]="orders | orderFilter : OrderState.BILLED"></app-admin-filtered-orders>
+      </ng-template>
+    </li>
+    <li ngbNavItem="prepared">
+      <a ngbNavLink>Összekészített</a>
+      <ng-template ngbNavContent>
+        <app-admin-filtered-orders [orders]="orders | orderFilter : OrderState.PREPARED"></app-admin-filtered-orders>
+      </ng-template>
+    </li>
+    <li ngbNavItem="closed">
+      <a ngbNavLink>Lezárt</a>
+      <ng-template ngbNavContent>
+        <app-admin-filtered-orders [orders]="orders | orderFilter : OrderState.CLOSED"></app-admin-filtered-orders>
+      </ng-template>
+    </li>
+    <li ngbNavItem="deleted">
+      <a ngbNavLink>Törölt</a>
+      <ng-template ngbNavContent>
+        <app-admin-filtered-orders [orders]="orders | orderFilter : OrderState.DELETED"></app-admin-filtered-orders>
+      </ng-template>
+    </li>
+  </ul>
+
+  <div [ngbNavOutlet]="nav" class="ml-4"></div>
+</div>

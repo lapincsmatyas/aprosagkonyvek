@@ -1,16 +1,20 @@
-<div *ngIf="imageUrls">
-  <ngb-carousel #carousel class="carousel" [interval]="2500" [showNavigationArrows]="false" [showNavigationIndicators]="false"
-                [hidden]="!imageUrls" [pauseOnHover]="false">
-    <ng-template *ngFor="let leg of imageUrls; let i = index" id="ngb-slide-{{i}}" ngbSlide>
-      <div class="picsum-img-wrapper">
-        <img class="mx-auto" [src]="this.imageUrls[i] | async" alt="">
-      </div>
-    </ng-template>
-  </ngb-carousel>
-  <div class="navigation-indicator-container">
-    <span  class="navigation-indicator" *ngFor="let _ of imageUrls; let i = index">
-      <fa-icon [class.active]="carousel.activeId == 'ngb-slide-'+i" [icon]="faSolidCircle" (click)="switchImage(i)"></fa-icon>
+<div class="carousel-container">
+  <div class="carousel" *ngIf="downloaded">
+    <ngb-carousel
+      #carousel [interval]="2500" [showNavigationArrows]="true" [showNavigationIndicators]="true"
+      [pauseOnHover]="false">
+      <ng-template *ngFor="let url of imageUrls; let i = index" id="ngb-slide-{{i}}" ngbSlide>
+        <div class="picsum-img-wrapper">
+          <img [src]="url" alt="">
+        </div>
+      </ng-template>
+    </ngb-carousel>
+    <div class="navigation-indicator-container" *ngIf="false">
+
+    <span class="navigation-indicator" *ngFor="let _ of imageUrls; let i = index">
+      <fa-icon [class.active]="carousel.activeId == 'ngb-slide-'+i" [icon]="faSolidCircle"
+               (click)="switchImage(i)"></fa-icon>
     </span>
+    </div>
   </div>
 </div>
-

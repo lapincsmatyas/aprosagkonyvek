@@ -1,22 +1,23 @@
 <div class="header-container">
   <nav class="header navbar navbar-expand-lg navbar-light">
-    <a class="navbar-brand" href="#"><img class="header-logo" src="../../../assets/images/logo/Aprosag_konyvek_logo_1_black.svg"></a>
+    <a class="navbar-brand" routerLink="termekeink"><img class="header-logo" src="../../../assets/images/logo/Aprosag_konyvek_logo_1_black.svg"></a>
+    <button class="btn btn-danger" routerLink="admin">Admin</button>
     <div class="collapse navbar-collapse">
       <ul class="navbar-nav ml-auto">
         <li class="nav-item active">
-          <a class="nav-link" routerLink="termekeink">Termékeink</a>
+          <a class="nav-link" routerLinkActive="current" routerLink="termekeink">Termékeink</a>
         </li>
         <li class="nav-item active">
-          <a class="nav-link" routerLink="miert-kulonleges">Miért különleges</a>
+          <a class="nav-link" routerLinkActive="current" routerLink="miert-kulonleges">Miért különleges</a>
         </li>
         <li class="nav-item active">
-          <a class="nav-link" routerLink="rolunk">Rólunk</a>
+          <a class="nav-link" routerLinkActive="current" routerLink="rolunk">Rólunk</a>
         </li>
         <li class="nav-item active">
-          <a class="nav-link" routerLink="kapcsolat">Kapcsolat</a>
+          <a class="nav-link" routerLinkActive="current" routerLink="kapcsolat">Kapcsolat</a>
         </li>
         <li class="nav-item active">
-          <a class="nav-link" routerLink="kosar"><fa-icon [icon]="faShoppingCart"></fa-icon>{{cartService.getItemCount()}}</a>
+          <a class="nav-link" routerLinkActive="current"  routerLink="kosar"><fa-icon [icon]="faShoppingCart"></fa-icon>{{cartService.getItemCount()}}</a>
         </li>
       </ul>
     </div>

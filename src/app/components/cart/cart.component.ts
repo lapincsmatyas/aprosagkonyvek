@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {CartService} from '../../service/cart.service';
-import {Item} from '../models/Item';
+import {Item} from '../../models/Item';
 import {KeyValue} from '@angular/common';
+import {ToastrService} from 'ngx-toastr';
 
 @Component({
   selector: 'app-cart',
@@ -9,15 +10,10 @@ import {KeyValue} from '@angular/common';
   styleUrls: ['./cart.component.css']
 })
 export class CartComponent implements OnInit {
-  public deliveryOptions = new Map<string, number>();
-  public selectedDelivery: KeyValue<string, number> = null;
 
-  constructor(public cartService: CartService) { }
+  constructor(public cartService: CartService, private toastr: ToastrService) { }
 
   ngOnInit(): void {
-    this.deliveryOptions.set('Házhozszállítás GLS-sel', 1490);
-    this.deliveryOptions.set('Foxpost csomagautomata', 700);
-    this.deliveryOptions.set('Személyes átvétel Mosonmagyaróváron', 0);
   }
 
   changeCount(item: Item, count: number): void {
@@ -25,6 +21,11 @@ export class CartComponent implements OnInit {
   }
 
   selectDelivery(delivery: KeyValue<string, number>): void {
-    this.selectedDelivery = delivery;
+    this.cartService.selectedDelivery = delivery;
+  }
+
+  deleteItemFromCart(item: KeyValue<string, [Item, number]>): void {
+    this.cartService.clearItemFromCart(item.key);
+    this.toastr.success('Termék törölve a kosárból');
   }
 }

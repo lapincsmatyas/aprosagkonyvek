@@ -15,9 +15,9 @@
       <tbody>
       <tr  *ngFor="let item of cartService.cart | keyvalue">
         <td scope="row">
-          <button class="btn btn-danger" (click)="cartService.clearItemFromCart(item.key)">x</button>
+          <button class="btn btn-danger" (click)="deleteItemFromCart(item)">x</button>
         </td>
-        <td>{{item.value[0].id}}</td>
+        <td><img class="item-image" [src]="item.value[0].images[0]"></td>
         <td>
           <strong>{{item.value[0].title}}</strong><br/>
           {{item.value[0].subtitle}}
@@ -54,23 +54,23 @@
         <tr>
           <td>Szállítás</td>
           <td>
-            <div *ngFor="let delivery of deliveryOptions | keyvalue; let i = index">
+            <div *ngFor="let delivery of cartService.deliveryOptions | keyvalue; let i = index">
               <input (click)="selectDelivery(delivery)" type="radio" name="delivery">{{delivery.key}}
             </div>
           </td>
           <td>
-            <div *ngFor="let delivery of deliveryOptions | keyvalue">
+            <div *ngFor="let delivery of cartService.deliveryOptions | keyvalue">
               {{delivery.value}}
             </div>
         </tr>
         <tr>
           <td>Összeg</td>
           <td></td>
-          <td *ngIf="selectedDelivery">{{cartService.getSumItemPrice() + selectedDelivery.value}}</td>
+          <td *ngIf="cartService.selectedDelivery">{{cartService.getSumItemPrice() + cartService.selectedDelivery.value}}</td>
         </tr>
         </tbody>
       </table>
-      <button [disabled]="!selectedDelivery" routerLink="/penztar" class="btn btn-success">Tovább a pénztárhoz</button>
+      <button [disabled]="!cartService.selectedDelivery.key" routerLink="/penztar" class="btn btn-success">Tovább a pénztárhoz</button>
     </div>
   </div>
 </div>
